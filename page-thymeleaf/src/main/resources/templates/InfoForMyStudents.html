@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+<title>My Page</title>
+<link th:href="@{/css/styles.css}" rel="stylesheet">
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+</head>
+
+<body>
+	<div class="container bg-light">
+		<div class="row justify-content-md-center">
+		<a th:href="@{/show/page}" class="btn btn-light btn-m">Welcome</a>
+		</div>
+		<hr>
+		<div class="container bg-light">
+			<div class="row justify-content-md-center">
+				<div class="col-col-lg-2">
+					<a th:href="@{/show/infoStudents}" class="btn btn-light btn-sm">
+						Info for Students </a>
+				</div>
+				<div class="col-md-auto">
+					<a th:href="@{/show/signUp}" class="btn btn-light btn-sm"> Sign
+						up for class </a>
+				</div>
+				<div class="col-col-lg-2">
+					<a th:href="@{/show/opinions}" class="btn btn-light btn-sm">
+						Opinions </a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<form action="#" th:action="@{/infoStudents}" th:object="${page}"
+		method="get"></form>
+	<div class="container">
+		<h4>Next Lessons:</h4>
+
+		<hr>
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>FirstName</th>
+					<th>LastName</th>
+					<th>Data</th>
+					<th>Hour</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="Student : ${page}">
+					<td th:text="${Student.firstName}">
+					<td th:text="${Student.lastName}">
+					<td th:text="${Student.nextDate}">
+					<td th:text="${Student.nextTime}">
+				</tr>
+			</tbody>
+
+
+		</table>
+	</div>
+</body>
+
+</html>
