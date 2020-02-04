@@ -3,13 +3,8 @@
 
 <head>
 <title>My Page</title>
-<link th:href="@{/css/styles.css}" rel="stylesheet">
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!-- Bootstrap CSS -->
+
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -20,7 +15,7 @@
 <body>
 	<div class="container bg-light">
 		<div class="row justify-content-md-center">
-		<a th:href="@{/show/page}" class="btn btn-light btn-m"><h4>Welcome!</h4></a>
+			<a th:href="@{/show/page}" class="btn btn-light btn-m">Welcome!</a>
 		</div>
 		<hr>
 		<div class="container bg-light">
@@ -30,8 +25,8 @@
 						Info for Students </a>
 				</div>
 				<div class="col-md-auto">
-					<a th:href="@{/show/signUp}" class="btn btn-light btn-sm"> Sign
-						up for class </a>
+					<a th:href="@{/show/signUp}" class="btn btn-light btn-sm"> 
+					Sign up for class </a>
 				</div>
 				<div class="col-col-lg-2">
 					<a th:href="@{/show/opinions}" class="btn btn-light btn-sm">
@@ -40,14 +35,16 @@
 			</div>
 		</div>
 
-<div class="text-center">
-    <img src="/png/dyplom.png" class="rounded float-left">
-    
-    </div>
+		<div class="text-center">
+			<img src="/png/dyplom.png" class="rounded float-left">
+		</div>
+		
 	</div>
+	<form action="#" th:action="@{/logout}" method="POST">
+		<input type="submit" value="Logout"
+			class="btn btn-outline-primary mt-2" />
+	</form>
 
-	<form action="#" th:action="@{/infoStudents}" th:object="${page}"
-		method="get"></form>
 </body>
 
 </html>

@@ -20,7 +20,7 @@ public class PageDaoImpl implements PageDao {
 	@Override
 	public List<Page> findAll() {
 		Session theSession = entityManager.unwrap(Session.class);
-		Query theQuery = theSession.createQuery("from Page", Page.class);
+		Query theQuery = theSession.createQuery("from Page page order by page.lastName asc", Page.class);
 		List<Page> thePage = theQuery.getResultList();		
 		
 		return thePage;
@@ -30,8 +30,17 @@ public class PageDaoImpl implements PageDao {
 	public void save(Page thePage) {
 		Session theSession = entityManager.unwrap(Session.class);
 		theSession.saveOrUpdate(thePage);
-		
+	}
+
+	@Override
+	public void deleteById(int theId) {
+		Session theSession = entityManager.unwrap(Session.class);
+		Query theQuery = theSession.createQuery("delete from Page where id=:pageId");
+		theQuery.setParameter("pageId", theId);
+		theQuery.executeUpdate();
 		
 	}
+	
+	
 	
 }

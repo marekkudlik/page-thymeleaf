@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://thymeleaf.org">
+
+<html lang="en" xmlns:th="http://thymeleaf.org">
 
 <head>
 <title>My Page</title>
@@ -24,8 +25,8 @@
 						Info for Students </a>
 				</div>
 				<div class="col-md-auto">
-					<a th:href="@{/show/signUp}" class="btn btn-light btn-sm"> 
-					Sign up for class </a>
+					<a th:href="@{/show/signUp}" class="btn btn-light btn-sm"> Sign
+						up for class </a>
 				</div>
 				<div class="col-col-lg-2">
 					<a th:href="@{/show/opinions}" class="btn btn-light btn-sm">
@@ -34,27 +35,36 @@
 			</div>
 		</div>
 	</div>
+
 	<div class="container">
-		<h4>My student's opinions:</h4>
+	<h4>Update</h4>
 		<hr>
-		
-		<table class="table table-bordered table-striped">
-			<thead class="thead-dark">
+
+		<form action="#" th:action="@{/show/update}" th:object="${page}"
+			method="get">
+			<table>
 				<tr>
-					<th>Student</th>
-					<th>Opinions</th>
+					<td><input type="text" th:field="*{firstName}"
+						placeholder="First Name"></td>
 				</tr>
-			</thead>
-
-			<tbody>
-				<tr th:each="Student : ${page}">
-					<td th:text="${Student.firstName}">
-					<td th:text="${Student.opinion}">
+				<tr>
+					<td><input type="text" th:field="*{lastName}"
+						placeholder="Last Name"></td>
 				</tr>
-			</tbody>
+				<tr>
+					<td><input type="text" th:field="*{nextDate}" 
+						placeholder="Next Date"></td>
+				</tr>
+				<tr>
+					<td><input type="text" th:field="*{nextTime}" 
+						placeholder="Next Time"></td>
+				</tr>
+			</table>
 
-		</table>
+			<button type="submit" class="btn btn-primary">Update</button>
+		</form>
 	</div>
+
 </body>
 
 </html>

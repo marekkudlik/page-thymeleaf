@@ -1,5 +1,6 @@
 package marek.poznan.pagethymeleaf.controller;
 
+
 import java.util.List;
 
 import javax.validation.Valid;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import marek.poznan.pagethymeleaf.entity.Page;
 import marek.poznan.pagethymeleaf.service.PageService;
@@ -62,6 +64,25 @@ public class PageController {
 			return "mainpage";
 		}
 		
+	}
+	@GetMapping("/delete")
+	public String deleteStudent(@RequestParam("pageId") int theId) {
+		theService.deleteById(theId);
+		
+		return "redirect:/show/infoStudents";
+	}
+	@GetMapping("/forUpdate")
+	public String forUpdate(@RequestParam("pageId") int theId, Model theModel) {
+		Page thePage = theService.findAll().get(theId);
+		theModel.addAttribute("page", thePage);
+		
+		return "update";
+	}
+	@GetMapping("/update")
+	public String updateStudent(@ModelAttribute("page") Page thePage){
+		theService.save(thePage);
+		//finishing(date format)
+		return "redirect:/infoStudents";	
 	}
 	
 

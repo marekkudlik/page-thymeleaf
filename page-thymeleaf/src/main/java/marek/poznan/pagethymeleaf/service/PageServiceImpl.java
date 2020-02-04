@@ -28,6 +28,12 @@ public class PageServiceImpl implements PageService{
 	public void save(Page thePage) {
 		dao.save(thePage);
 	}
+
+	@Override
+	@Transactional
+	public void deleteById(int theId) {
+		dao.deleteById(theId);
+	}
 	
 	
 

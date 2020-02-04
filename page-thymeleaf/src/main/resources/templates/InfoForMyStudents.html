@@ -1,15 +1,10 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
 <title>My Page</title>
-<link th:href="@{/css/styles.css}" rel="stylesheet">
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!-- Bootstrap CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -20,7 +15,7 @@
 <body>
 	<div class="container bg-light">
 		<div class="row justify-content-md-center">
-		<a th:href="@{/show/page}" class="btn btn-light btn-m">Welcome</a>
+			<a th:href="@{/show/page}" class="btn btn-light btn-m">Welcome</a>
 		</div>
 		<hr>
 		<div class="container bg-light">
@@ -30,8 +25,8 @@
 						Info for Students </a>
 				</div>
 				<div class="col-md-auto">
-					<a th:href="@{/show/signUp}" class="btn btn-light btn-sm"> Sign
-						up for class </a>
+					<a th:href="@{/show/signUp}" class="btn btn-light btn-sm"> 	
+					Sign up for class </a>
 				</div>
 				<div class="col-col-lg-2">
 					<a th:href="@{/show/opinions}" class="btn btn-light btn-sm">
@@ -40,9 +35,6 @@
 			</div>
 		</div>
 	</div>
-
-	<form action="#" th:action="@{/infoStudents}" th:object="${page}"
-		method="get"></form>
 	<div class="container">
 		<h4>Next Lessons:</h4>
 
@@ -54,19 +46,29 @@
 					<th>LastName</th>
 					<th>Data</th>
 					<th>Hour</th>
+					<th><div sec:authorize="hasRole('ROLE_ADMIN')">Action
+							for Me</div></th>
 				</tr>
 			</thead>
 
 			<tbody>
-				<tr th:each="Student : ${page}">
-					<td th:text="${Student.firstName}">
-					<td th:text="${Student.lastName}">
-					<td th:text="${Student.nextDate}">
-					<td th:text="${Student.nextTime}">
+				<tr th:each="student : ${page}">
+					<td th:text="${student.firstName}">
+					<td th:text="${student.lastName}">
+					<td th:text="${student.nextDate}">
+					<td th:text="${student.nextTime}">
+					<td>
+						<div sec:authorize="hasRole('ROLE_ADMIN')">
+							<a th:href="@{/show/forUpdate(pageId=${student.id})}"
+								class="btn btn-danger btn-sm"> Update </a> <a
+								th:href="@{/show/delete(pageId=${student.id})}"
+								class="btn btn-danger btn-sm"
+								onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false">
+								Delete </a>
+						</div>
+					</td>
 				</tr>
 			</tbody>
-
-
 		</table>
 	</div>
 </body>

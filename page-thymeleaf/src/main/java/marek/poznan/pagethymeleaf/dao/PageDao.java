@@ -11,4 +11,6 @@ public interface PageDao {
 
 	public void save(Page thePage);
 
+	public void deleteById(int theId);
+
 }
