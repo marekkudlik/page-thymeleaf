@@ -1,7 +1,6 @@
 package marek.poznan.pagethymeleaf.entity;
 
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +11,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "page")
@@ -35,10 +35,12 @@ public class Page {
 	@Column(name = "opinion")
 	private String opinion;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	@Column(name = "next_date")
 	private Date nextDate;
 
+	@DateTimeFormat(pattern = "HH:mm:ss")
 	@Temporal(TemporalType.TIME)
 	@Column(name = "next_time")
 	private Date nextTime;
@@ -59,6 +61,16 @@ public class Page {
 		this.opinion = opinion;
 		this.nextDate = nextDate;
 		this.nextTime = nextTime;
+		this.email = email;
+	}
+	
+
+	public Page(@NotNull(message = "is required") @Size(min = 1, max = 30) String firstName,
+			@NotNull(message = "is required") @Size(min = 1, max = 30) String lastName, String opinion,
+			@NotNull(message = "is required") @Size(min = 1, max = 30) String email) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.opinion = opinion;
 		this.email = email;
 	}
 

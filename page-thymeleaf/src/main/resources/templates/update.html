@@ -37,11 +37,12 @@
 	</div>
 
 	<div class="container">
-	<h4>Update</h4>
+		<h4>Update</h4>
 		<hr>
 
 		<form action="#" th:action="@{/show/update}" th:object="${page}"
 			method="get">
+			<input type="hidden" th:field="*{id}" />
 			<table>
 				<tr>
 					<td><input type="text" th:field="*{firstName}"
@@ -52,12 +53,15 @@
 						placeholder="Last Name"></td>
 				</tr>
 				<tr>
-					<td><input type="text" th:field="*{nextDate}" 
+					<td><input type="text" th:field="*{nextDate}"
 						placeholder="Next Date"></td>
 				</tr>
 				<tr>
-					<td><input type="text" th:field="*{nextTime}" 
+					<td><input type="text" th:field="*{nextTime}"
 						placeholder="Next Time"></td>
+				</tr>
+				<tr>
+					<td><input type="text" th:field="*{email}" placeholder="Email"></td>
 				</tr>
 			</table>
 

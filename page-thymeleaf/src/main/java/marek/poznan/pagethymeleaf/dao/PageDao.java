@@ -6,11 +6,12 @@ import marek.poznan.pagethymeleaf.entity.Page;
 
 public interface PageDao {
 
+	List<Page> findAll();
 
-	public List<Page> findAll();
+	void save(Page thePage);
 
-	public void save(Page thePage);
-
-	public void deleteById(int theId);
+	void deleteById(int theId);
+	
+	Page findById(int id);
 
 }

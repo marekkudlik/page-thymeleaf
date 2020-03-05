@@ -6,9 +6,11 @@ import marek.poznan.pagethymeleaf.entity.Page;
 
 public interface PageService {
 
-	public List<Page> findAll();
+	List<Page> findAll();
 
-	public void save(Page thePage);
+	void save(Page thePage);
 
-	public void deleteById(int theId);
+	void deleteById(int theId);
+
+	Page findById(int theId);
 }
