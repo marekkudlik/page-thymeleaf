@@ -55,6 +55,8 @@
 				<tr>
 					<td><input type="text" th:field="*{nextDate}"
 						placeholder="Next Date"></td>
+						<td th:if="${#fields.hasErrors('nextDate')}"
+						th:errors="*{nextDate}"></td>
 				</tr>
 				<tr>
 					<td><input type="text" th:field="*{nextTime}"

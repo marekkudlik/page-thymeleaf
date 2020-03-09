@@ -83,10 +83,15 @@ public class PageController {
 	}
 
 	@GetMapping("/update")
-	public String updateStudent(@ModelAttribute("page") Page thePage) {
-		theService.save(thePage);
+	public String updateStudent(@Valid @ModelAttribute("page") Page thePage,  BindingResult theBindingResult) {
+		if (theBindingResult.hasErrors()) {
+			return "update";
+		} else {
+			theService.save(thePage);
+			return "redirect:/show/infoStudents";
+		}
 
-		return "redirect:/show/infoStudents";
+		
 	}
 
 }

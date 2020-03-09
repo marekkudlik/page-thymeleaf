@@ -1,6 +1,7 @@
 package marek.poznan.pagethymeleaf.entity;
 
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -23,12 +29,14 @@ public class Page {
 	private int id;
 
 	@NotNull(message = "is required")
-	@Size(min = 1, max = 30)
+	@Size(min = 2, max = 25)
+	@Pattern(message = "Put the right name please", regexp = ("[A-Z]([ a-zA-Z]{0,23}[a-z])?"))
 	@Column(name = "first_name")
 	private String firstName;
 
 	@NotNull(message = "is required")
-	@Size(min = 1, max = 30)
+	@Size(min = 2, max = 30)
+	@Pattern(message = "Put the right name please", regexp = ("[A-Z]([- a-zA-Z]{0,28}[a-z])?"))
 	@Column(name = "last_name")
 	private String lastName;
 
@@ -37,6 +45,7 @@ public class Page {
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
+	@FutureOrPresent(message = "you have made a mistake, lesson can not be in the past")
 	@Column(name = "next_date")
 	private Date nextDate;
 
@@ -47,6 +56,7 @@ public class Page {
 
 	@NotNull(message = "is required")
 	@Size(min = 1, max = 30)
+	@Email(message = "email address has invalid format: ${validatedValue}")
 	@Column(name = "email")
 	private String email;
 
@@ -63,11 +73,13 @@ public class Page {
 		this.nextTime = nextTime;
 		this.email = email;
 	}
-	
 
-	public Page(@NotNull(message = "is required") @Size(min = 1, max = 30) String firstName,
-			@NotNull(message = "is required") @Size(min = 1, max = 30) String lastName, String opinion,
-			@NotNull(message = "is required") @Size(min = 1, max = 30) String email) {
+	public Page(int id,
+			@NotNull(message = "is required") @Size(min = 2, max = 25) @Pattern(message = "Put the right name please", regexp = "[A-Z]([ a-zA-Z]{0,23}[a-z])?") String firstName,
+			@NotNull(message = "is required") @Size(min = 2, max = 30) @Pattern(message = "Put the right name please", regexp = "[A-Z]([- a-zA-Z]{0,28}[a-z])?") String lastName,
+			String opinion,
+			@NotNull(message = "is required") @Size(min = 1, max = 30) @Email(message = "email address has invalid format: ${validatedValue}") String email) {
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.opinion = opinion;
