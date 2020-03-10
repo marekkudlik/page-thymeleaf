@@ -18,7 +18,7 @@
 			<a th:href="@{/show/page}" class="btn btn-light btn-m">Welcome!</a>
 		</div>
 		<hr>
-		<div class="container bg-light">
+		<div>
 			<div class="row justify-content-md-center">
 				<div class="col-col-lg-2">
 					<a th:href="@{/show/infoStudents}" class="btn btn-light btn-sm">
@@ -34,16 +34,32 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="text-center">
-			<img src="/png/dyplom.png" class="rounded float-left">
+		<hr>
+		<div>
+		<img src="/png/dyplom.png" class="rounded float-left">
+		<h4>About Me</h4>
+		<div>	
+			<h6>My name is Marek. I'm 26 years old. 
+			I studied engineering in Posnan University of Technology. 
+			I have learned English since I was a child. 
+			Also I have been traveling around the world as a pool billiard player 
+			so I have experienced using English in real life.
+			I have been giving lessons for 7 years and everyone loved it. 
+			I have taught children so I know how to communicate with them in way so they can also enjoy. 
+			You are welcome to contact me!
+			</h6>			
 		</div>
-		
-	</div>
-	<form action="#" th:action="@{/logout}" method="POST">
+		</div>
+		<hr>
+		<div>
+		<form action="#" th:action="@{/logout}" method="POST">
 		<input type="submit" value="Logout"
 			class="btn btn-outline-primary mt-2" />
 	</form>
+	</div>
+	</div>
+	
+	
 
 </body>
 
