@@ -63,6 +63,19 @@ public class Page {
 	public Page() {
 
 	}
+	
+
+	public Page(
+			@NotNull(message = "is required") @Size(min = 2, max = 25) @Pattern(message = "Put the right name please", regexp = "[A-Z]([ a-zA-Z]{0,23}[a-z])?") String firstName,
+			@NotNull(message = "is required") @Size(min = 2, max = 30) @Pattern(message = "Put the right name please", regexp = "[A-Z]([- a-zA-Z]{0,28}[a-z])?") String lastName,
+			String opinion,
+			@NotNull(message = "is required") @Size(min = 1, max = 30) @Email(message = "email address has invalid format: ${validatedValue}") String email) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.opinion = opinion;
+		this.email = email;
+	}
+
 
 	public Page(int id, String firstName, String lastName, String opinion, Date nextDate, Date nextTime, String email) {
 		this.id = id;
