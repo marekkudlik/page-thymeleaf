@@ -3,64 +3,64 @@
 
 <head>
 <title>My Page</title>
-
-
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-	crossorigin="anonymous">
-
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 
 <body>
-	<div class="container bg-light">
+	<div class="container-xl bg-dark text-white">
 		<div class="row justify-content-md-center">
 			<a th:href="@{/show/page}" class="btn btn-light btn-m">Welcome!</a>
 		</div>
 		<hr>
-		<div>
-			<div class="row justify-content-md-center">
-				<div class="col-col-lg-2">
-					<a th:href="@{/show/infoStudents}" class="btn btn-light btn-sm">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="col">
+					<a th:href="@{/show/infoStudents}" class="btn btn-info btn-lg">
 						Info for Students </a>
 				</div>
-				<div class="col-md-auto">
-					<a th:href="@{/show/signUp}" class="btn btn-light btn-sm"> 
-					Sign up for class </a>
+				<hr>
+				<div class="col">
+					<a th:href="@{/show/signUp}" class="btn btn-info btn-lg"> Sign
+						up for class </a>
 				</div>
-				<div class="col-col-lg-2">
-					<a th:href="@{/show/opinions}" class="btn btn-light btn-sm">
+				<hr>
+				<div class="col">
+					<a th:href="@{/show/opinions}" class="btn btn-info btn-lg">
 						Opinions </a>
+				</div>
+				<hr>
+				<div class="col">
+					<h3>''The beautiful thing about learning is that nobody can take
+						it away from you'' B.B. King</h3>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="left">
+					<img src="/png/dyplom.png" class="rounded float-left">
+				</div>
+				<div class="left">
+					<h1>About Me</h1>
+					<h4>My name is Marek. I'm 26 years old. I studied engineering
+						in Posnan University of Technology. I have been learning English
+						for 18 years. Also I have been traveling around the world as a
+						pool billiard player so I have experienced using English in real
+						life. I have been giving lessons for 7 years and everyone loved
+						it. I have taught children so I know how to communicate with them
+						in a way so they can also enjoy. You are welcome to contact me!</h4>
 				</div>
 			</div>
 		</div>
 		<hr>
 		<div>
-		<img src="/png/dyplom.png" class="rounded float-left">
-		<h4>About Me</h4>
-		<div>	
-			<h6>My name is Marek. I'm 26 years old. 
-			I studied engineering in Posnan University of Technology. 
-			I have learned English since I was a child. 
-			Also I have been traveling around the world as a pool billiard player 
-			so I have experienced using English in real life.
-			I have been giving lessons for 7 years and everyone loved it. 
-			I have taught children so I know how to communicate with them in way so they can also enjoy. 
-			You are welcome to contact me!
-			</h6>			
+			<form action="#" th:action="@{/logout}" method="POST">
+				<input type="submit" value="Logout"
+					class="btn btn-outline-primary mt-2" />
+			</form>
 		</div>
+		<div class="rectangle">2020 My Web Page. Welcome to visit!
 		</div>
-		<hr>
-		<div>
-		<form action="#" th:action="@{/logout}" method="POST">
-		<input type="submit" value="Logout"
-			class="btn btn-outline-primary mt-2" />
-	</form>
 	</div>
-	</div>
-	
-	
-
 </body>
 
 </html>
